@@ -1,29 +1,36 @@
-# AI Crochet Pattern Visualizer
+# Le Crochet
 
-A comprehensive platform for creating, visualizing, and sharing crochet patterns using AI-powered pattern generation, interactive 3D visualization, and collaborative tools.
+A comprehensive platform for creating, visualizing, and selling crochet patterns through interactive 2D diagrams and 3D models.
 
 ## 🧶 Overview
 
-Transform your crochet ideas into reality with our intelligent pattern visualizer. Simply describe your desired pattern in natural language, and watch it come to life through detailed diagrams and interactive 3D models.
+Le Crochet empowers crochet enthusiasts to input their patterns using standard notation, visualize them through detailed diagrams and interactive 3D models, and share or sell their creations in our marketplace.
 
 ## ✨ Core Features
 
-### Pattern Creation & Generation
-- **Natural Language Input**: Describe patterns using plain English ("Make a granny square with blue center and white border")
-- **AI Pattern Translation**: Convert descriptions into standardized crochet notation
-- **Smart Pattern Validation**: Automatic error detection and correction suggestions
-- **Stitch Library**: Comprehensive database of common and advanced stitches
+### Pattern Input & Creation
+- **Standard Notation Support**: Input patterns using traditional crochet abbreviations (sc, dc, ch, etc.)
+- **Visual Pattern Builder**: Drag-and-drop interface for creating patterns
+- **Pattern Validation**: Automatic checking for common pattern errors
+- **Import/Export**: Support for common pattern file formats (.pdf, .txt)
 
 ### Visualization Tools
 - **Interactive 3D Viewer**: Real-time 3D rendering of your crochet projects
-- **Zoomable Diagram Generator**: Clear, printable stitch diagrams with symbols
-- **Progress Tracking**: Visual indicators for completed sections
+- **2D Diagram Generator**: Clear, printable stitch diagrams with international symbols
 - **Multiple View Modes**: Wireframe, textured, and realistic material rendering
+- **Progress Tracking**: Visual indicators for completed sections
+
+### Marketplace
+- **Pattern Sales**: Sell your patterns with 15% platform commission
+- **Secure Payments**: Integrated payment processing
+- **Creator Profiles**: Showcase your pattern portfolio
+- **Reviews & Ratings**: Community feedback system
+- **Search & Discovery**: Find patterns by category, difficulty, or technique
 
 ### Customization Options
-- **Color Palette Editor**: Choose from thousands of yarn colors or upload custom swatches
+- **Color Palette Editor**: Choose from thousands of yarn colors
 - **Yarn Database Integration**: Real yarn brands, weights, and yardage calculations
-- **Size Scaling**: Automatic pattern adjustment for different project sizes
+- **Size Scaling**: Adjust patterns for different project sizes
 - **Texture Mapping**: Apply realistic yarn textures to 3D models
 
 ## 🏗️ Technical Architecture
@@ -34,12 +41,14 @@ Transform your crochet ideas into reality with our intelligent pattern visualize
 │   ├── PatternEditor/
 │   ├── 3DViewer/
 │   ├── DiagramGenerator/
+│   ├── Marketplace/
 │   └── ColorPalette/
 ├── pages/
 │   ├── create/
 │   ├── gallery/
+│   ├── marketplace/
 │   ├── profile/
-│   └── marketplace/
+│   └── pattern/[id]/
 ├── hooks/
 ├── utils/
 └── styles/
@@ -50,24 +59,17 @@ Transform your crochet ideas into reality with our intelligent pattern visualize
 - **Canvas API**: 2D diagram generation
 - **WebGL**: Hardware-accelerated rendering
 - **PWA**: Offline pattern access
-- **Responsive Design**: Mobile-first approach
+- **Stripe**: Payment processing
 
-### Backend Options
-
-#### Option A: TypeScript (Node.js)
-- **Framework**: Express.js or Fastify
+### Backend (Node.js/TypeScript)
+- **Framework**: Express.js with TypeScript
 - **Database**: PostgreSQL with Prisma ORM
-- **File Storage**: AWS S3 for OBJ files and textures
-- **Real-time**: Socket.io for collaborative editing
-
-#### Option B: Python
-- **Framework**: FastAPI for high-performance API
-- **ML Integration**: TensorFlow/PyTorch for pattern generation
-- **Computer Vision**: OpenCV for image-based pattern recognition
-- **Scientific Computing**: NumPy for complex pattern calculations
+- **File Storage**: AWS S3 for pattern files and 3D assets
+- **Authentication**: JWT with refresh tokens
+- **Payment Processing**: Stripe integration
 
 ### 3D Asset Pipeline
-- **Blender Integration**: Custom addon for exporting stitch OBJ files
+- **Custom Stitch Library**: Pre-built 3D models for common stitches
 - **Asset Optimization**: Automatic LOD generation and compression
 - **Material System**: PBR materials for realistic yarn appearance
 - **Animation Support**: Stitch-by-stitch construction animations
@@ -76,129 +78,134 @@ Transform your crochet ideas into reality with our intelligent pattern visualize
 
 ### Prerequisites
 - Node.js 18+
-- Python 3.9+ (if using Python backend)
-- Blender 3.0+ (for asset creation)
 - PostgreSQL 14+
+- Stripe account (for payments)
+- AWS account (for file storage)
 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/ai-crochet-visualizer.git
-cd ai-crochet-visualizer
+git clone https://github.com/your-username/le-crochet.git
+cd le-crochet
 
 # Install frontend dependencies
 cd frontend
 npm install
 
-# Install backend dependencies (TypeScript)
-cd ../backend-ts
+# Install backend dependencies
+cd ../backend
 npm install
-
-# Or Python backend
-cd ../backend-py
-pip install -r requirements.txt
 
 # Set up environment variables
 cp .env.example .env
 # Edit .env with your configuration
 
-# Run development servers
-npm run dev        # Frontend
-npm run dev:api    # Backend (TS)
-# or
-python main.py     # Backend (Python)
+# Run database migrations
+npm run db:migrate
+
+# Start development servers
+npm run dev        # Frontend (port 3000)
+npm run dev:api    # Backend (port 8000)
 ```
 
 ### Environment Variables
 
 ```env
 # Database
-DATABASE_URL="postgresql://user:password@localhost:5432/crochet_db"
+DATABASE_URL="postgresql://user:password@localhost:5432/lecrochet_db"
 
 # File Storage
 AWS_ACCESS_KEY_ID="your_access_key"
 AWS_SECRET_ACCESS_KEY="your_secret_key"
-AWS_BUCKET_NAME="crochet-patterns"
-
-# AI Services
-OPENAI_API_KEY="your_openai_key"
-ANTHROPIC_API_KEY="your_anthropic_key"
+AWS_BUCKET_NAME="lecrochet-patterns"
+AWS_REGION="us-east-1"
 
 # Authentication
-NEXTAUTH_SECRET="your_nextauth_secret"
-GOOGLE_CLIENT_ID="your_google_client_id"
-GOOGLE_CLIENT_SECRET="your_google_client_secret"
+JWT_SECRET="your_jwt_secret"
+JWT_REFRESH_SECRET="your_refresh_secret"
+
+# Payment Processing
+STRIPE_PUBLIC_KEY="your_stripe_public_key"
+STRIPE_SECRET_KEY="your_stripe_secret_key"
+STRIPE_WEBHOOK_SECRET="your_webhook_secret"
+
+# Email
+SMTP_HOST="smtp.gmail.com"
+SMTP_PORT=587
+SMTP_USER="your_email@gmail.com"
+SMTP_PASS="your_app_password"
+
+# App Configuration
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+API_URL="http://localhost:8000"
 ```
 
-## 💡 Advanced Features
+## 💡 Key Features
 
-### AI-Powered Enhancements
-- **Pattern Completion**: Auto-complete partial pattern descriptions
-- **Style Transfer**: Apply design elements from one pattern to another
-- **Difficulty Assessment**: Automatic skill level categorization
-- **Yarn Substitution**: Smart recommendations for alternative yarns
+### Pattern Input Methods
+- **Text Input**: Standard crochet notation with auto-completion
+- **Visual Builder**: Drag-and-drop pattern construction
+- **Template Library**: Start from common pattern bases
+- **Import Tools**: Upload existing pattern files
 
-### Collaboration Tools
-- **Pattern Sharing**: Public gallery with search and filtering
-- **Version Control**: Track pattern iterations and changes
-- **Community Features**: Comments, likes, and pattern collections
-- **Collaborative Editing**: Real-time multi-user pattern creation
-
-### Mobile Features
-- **Offline Mode**: Access patterns without internet connection
-- **Voice Commands**: Hands-free pattern navigation whiLe Crocheting
-- **Progress Photos**: Track your work with integrated camera
-- **Stitch Counter**: Smart row and stitch counting with haptic feedback
-
-## 💰 Monetization Strategy
-
-### Freemium Model
-- **Free Tier**: Basic patterns, limited 3D views, community gallery access
-- **Pro Subscription ($9.99/month)**:
-  - Unlimited pattern creation and storage
-  - High-resolution 3D exports
-  - Advanced AI features
-  - Priority support
+### Visualization Engine
+- **Real-time Rendering**: See changes as you edit
+- **Print-Ready Diagrams**: High-resolution exports for printing
+- **Interactive 3D**: Rotate, zoom, and inspect your patterns
+- **Material Preview**: See how different yarns will look
 
 ### Marketplace Features
-- **Pattern Sales**: Creators can sell premium patterns (70/30 revenue split)
-- **Custom Commissions**: Connect users with pattern designers
-- **Yarn Affiliate Program**: Earn commissions on yarn purchases
-- **Premium Asset Packs**: Specialty stitches and textures
+- **Creator Dashboard**: Track sales, manage patterns, view analytics
+- **Pattern Browser**: Advanced filtering and search
+- **Secure Transactions**: Escrow system for digital pattern sales
+- **Community Features**: Favorites, collections, and following
 
-### Enterprise Solutions
-- **Yarn Store Integration**: White-label solutions for craft retailers
-- **Educational Licensing**: Special pricing for schools and workshops
-- **API Access**: For third-party integrations
+## 💰 Revenue Model
+
+### Platform Commission
+- **15% commission** on all pattern sales
+- Creators keep 85% of revenue
+- Transparent fee structure with no hidden costs
+
+### Premium Features (Optional)
+- **Basic Account**: Free pattern creation and basic visualization
+- **Creator Pro ($4.99/month)**:
+  - Advanced 3D rendering options
+  - Bulk pattern management
+  - Enhanced analytics
+  - Priority marketplace placement
+
+### Additional Revenue Streams
+- **Featured Listings**: Paid promotion in marketplace
+- **Yarn Partnership**: Affiliate commissions on yarn sales
+- **Custom Branding**: White-label solutions for yarn stores
 
 ## 🗂️ Project Structure
 
 ```
-ai-crochet-visualizer/
+le-crochet/
 ├── frontend/                 # Next.js application
 │   ├── src/
 │   │   ├── components/
+│   │   │   ├── PatternEditor/
+│   │   │   ├── 3DViewer/
+│   │   │   ├── Marketplace/
+│   │   │   └── Common/
 │   │   ├── pages/
 │   │   ├── hooks/
-│   │   └── utils/
+│   │   ├── utils/
+│   │   └── styles/
 │   ├── public/
 │   └── package.json
-├── backend-ts/              # TypeScript backend
+├── backend/                 # Node.js/TypeScript API
 │   ├── src/
 │   │   ├── routes/
 │   │   ├── models/
 │   │   ├── services/
+│   │   ├── middleware/
 │   │   └── utils/
 │   └── package.json
-├── backend-py/              # Python backend (alternative)
-│   ├── app/
-│   │   ├── api/
-│   │   ├── models/
-│   │   ├── services/
-│   │   └── utils/
-│   └── requirements.txt
-├── blender-addon/           # Custom Blender addon
 ├── assets/                  # 3D models and textures
 │   ├── stitches/
 │   ├── materials/
@@ -209,29 +216,56 @@ ai-crochet-visualizer/
 
 ## 🧪 Development Roadmap
 
-### Phase 1: MVP (Months 1-3)
-- Basic pattern input and validation
-- Simple 3D visualization
-- Core stitch library
+### Phase 1: Core Platform (Months 1-2)
+- Pattern input system
+- Basic 2D diagram generation
 - User authentication
+- File storage setup
 
-### Phase 2: Enhanced Features (Months 4-6)
-- AI pattern generation
-- Advanced 3D interactions
-- Color customization
-- Pattern sharing
+### Phase 2: 3D Visualization (Months 3-4)
+- 3D rendering engine
+- Stitch library integration
+- Color and material system
+- Export functionality
 
-### Phase 3: Community & Mobile (Months 7-9)
-- Mobile app development
-- Community features
-- Marketplace integration
-- Advanced AI features
+### Phase 3: Marketplace (Months 5-6)
+- Payment processing
+- Pattern listing system
+- Search and discovery
+- Creator dashboard
 
-### Phase 4: Enterprise (Months 10-12)
-- API development
-- White-label solutions
-- Advanced analytics
-- International expansion
+### Phase 4: Enhancement (Months 7-8)
+- Mobile optimization
+- Advanced pattern features
+- Community tools
+- Performance optimization
+
+## 🛠️ API Endpoints
+
+### Pattern Management
+```
+GET    /api/patterns              # List patterns
+POST   /api/patterns              # Create pattern
+GET    /api/patterns/:id          # Get pattern details
+PUT    /api/patterns/:id          # Update pattern
+DELETE /api/patterns/:id          # Delete pattern
+```
+
+### Marketplace
+```
+GET    /api/marketplace           # Browse marketplace
+POST   /api/marketplace/:id/purchase  # Purchase pattern
+GET    /api/sales                 # Creator sales data
+POST   /api/patterns/:id/publish  # Publish to marketplace
+```
+
+### User Management
+```
+POST   /api/auth/register         # User registration
+POST   /api/auth/login            # User login
+GET    /api/users/profile         # Get user profile
+PUT    /api/users/profile         # Update profile
+```
 
 ## 🤝 Contributing
 
@@ -239,16 +273,16 @@ We welcome contributions from the crochet and developer communities!
 
 ### How to Contribute
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create a feature branch (`git checkout -b feature/new-feature`)
+3. Commit your changes (`git commit -m 'Add new feature'`)
+4. Push to the branch (`git push origin feature/new-feature`)
 5. Open a Pull Request
 
 ### Development Guidelines
-- Follow the established code style (ESLint/Prettier configured)
+- Follow TypeScript best practices
 - Write comprehensive tests for new features
-- Update documentation for API changes
 - Ensure 3D assets are optimized for web delivery
+- Update documentation for API changes
 
 ## 📄 License
 
@@ -256,18 +290,18 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙋‍♀️ Support
 
-- **Documentation**: [docs.crochetvisualizer.com](https://docs.crochetvisualizer.com)
-- **Community Discord**: [Join our server](https://discord.gg/crochetvis)
-- **Email Support**: support@crochetvisualizer.com
+- **Documentation**: [docs.lecrochet.com](https://docs.lecrochet.com)
+- **Community Discord**: [Join our server](https://discord.gg/lecrochet)
+- **Email Support**: support@lecrochet.com
 - **Bug Reports**: Use GitHub Issues
 
 ## 🏆 Acknowledgments
 
 - Crochet community for pattern validation and feedback
 - Three.js team for excellent 3D capabilities
-- Blender Foundation for 3D modeling tools
+- Stripe for secure payment processing
 - Open source yarn color databases
 
 ---
 
-*Transform your crochet dreams into digital reality* 🧶✨
+*Bring your crochet patterns to life* 🧶✨

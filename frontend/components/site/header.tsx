@@ -12,8 +12,18 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { usePathname } from "next/navigation"
 
 export function Header() {
+  const pathname = usePathname()
+
+  const navLinks = [
+    { href: "/gallery", label: "Gallery" },
+    { href: "/marketplace", label: "Marketplace" },
+    { href: "/contact", label: "Contact" },
+    { href: "/privacy", label: "Privacy" },
+  ]
+
   return (
     <header className="border-b border-gray-200">
       <div className="container mx-auto px-6 py-4">
@@ -22,18 +32,17 @@ export function Header() {
             Le Crochet
           </Link>
           <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/gallery" className="text-sm font-light hover:text-gray-600 transition-colors">
-              Gallery
-            </Link>
-            <Link href="/marketplace" className="text-sm font-light hover:text-gray-600 transition-colors">
-              Marketplace
-            </Link>
-            <Link href="/contact" className="text-sm font-light hover:text-gray-600 transition-colors">
-              Contact
-            </Link>
-            <Link href="/privacy" className="text-sm font-light hover:text-gray-600 transition-colors">
-              Privacy
-            </Link>
+            {navLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={`text-sm font-light transition-colors hover:text-gray-600 ${
+                  pathname === href ? "underline underline-offset-4" : ""
+                }`}
+              >
+                {label}
+              </Link>
+            ))}
           </nav>
           <AuthButtons />
         </div>

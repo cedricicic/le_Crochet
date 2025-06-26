@@ -6,7 +6,7 @@ export function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
-            <div className="text-lg font-light tracking-wide mb-4">CROCHET.AI</div>
+            <div className="text-lg font-light tracking-wide mb-4">Le Crochet</div>
             <p className="text-sm text-gray-600 font-light">The future of crochet pattern creation and sharing.</p>
           </div>
           <div>
@@ -53,7 +53,7 @@ export function Footer() {
           </div>
         </div>
         <div className="border-t border-gray-200 mt-12 pt-8 text-center">
-          <p className="text-sm text-gray-600 font-light">© 2024 Crochet.AI. All rights reserved.</p>
+          <p className="text-sm text-gray-600 font-light">© 2024 Le Crochet. All rights reserved.</p>
         </div>
       </div>
     </footer>

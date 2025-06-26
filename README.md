@@ -147,7 +147,7 @@ GOOGLE_CLIENT_SECRET="your_google_client_secret"
 
 ### Mobile Features
 - **Offline Mode**: Access patterns without internet connection
-- **Voice Commands**: Hands-free pattern navigation while crocheting
+- **Voice Commands**: Hands-free pattern navigation whiLe Crocheting
 - **Progress Photos**: Track your work with integrated camera
 - **Stitch Counter**: Smart row and stitch counting with haptic feedback
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import MarketplacePage from "./client";
 
 export const metadata: Metadata = {
-    title: "Marketplace | CROCHET.AI",
+    title: "Marketplace | Le Crochet",
     description: "Sell your patterns or discover unique designs from creators worldwide in our integrated marketplace.",
 };
 

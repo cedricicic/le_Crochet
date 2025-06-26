@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
 import Provider from "@/components/site/session-provider";
+import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
         <Provider>
           <Header />
           <main className="flex-grow">{children}</main>
+          <Analytics />
           <Footer />
         </Provider>
       </body>

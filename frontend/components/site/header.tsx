@@ -10,17 +10,17 @@ export function Header() {
             Le Crochet
           </Link>
           <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/features" className="text-sm font-light hover:text-gray-600 transition-colors">
-              Features
-            </Link>
             <Link href="/gallery" className="text-sm font-light hover:text-gray-600 transition-colors">
               Gallery
             </Link>
             <Link href="/marketplace" className="text-sm font-light hover:text-gray-600 transition-colors">
               Marketplace
             </Link>
-            <Link href="/pricing" className="text-sm font-light hover:text-gray-600 transition-colors">
-              Pricing
+            <Link href="/contact" className="text-sm font-light hover:text-gray-600 transition-colors">
+              Contact
+            </Link>
+            <Link href="/privacy" className="text-sm font-light hover:text-gray-600 transition-colors">
+              Privacy
             </Link>
           </nav>
           <div className="flex items-center space-x-4">

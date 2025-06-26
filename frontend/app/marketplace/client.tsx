@@ -6,7 +6,7 @@ import { Share2 } from "lucide-react";
 
 export default function MarketplacePage() {
     return (
-        <div className="min-h-screen bg-white text-black">
+        <div className="bg-white text-black">
             {/* Marketplace Section */}
             <section id="marketplace" className="py-20 bg-gray-50">
                 <div className="container mx-auto px-6">

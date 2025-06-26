@@ -3,6 +3,15 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useSession, signIn, signOut } from "next-auth/react"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export function Header() {
   return (
@@ -36,21 +45,41 @@ export function Header() {
 function AuthButtons() {
   const { data: session } = useSession()
 
-  if (session) {
+  if (session && session.user) {
     return (
       <div className="flex items-center space-x-4">
         <Link href="/create">
-          <Button className="bg-black text-white hover:bg-gray-800 text-sm font-light px-6 transition-colors duration-200 ease-in-out">
+          <Button className="bg-gray-200 text-black hover:bg-gray-300 text-sm font-light px-6 transition-colors duration-200 ease-in-out">
             Create
           </Button>
         </Link>
-        <Button 
-          onClick={() => signOut()} 
-          variant="ghost" 
-          className="text-sm font-light transition-colors duration-200 ease-in-out hover:text-gray-700"
-        >
-          Sign Out
-        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+              <Avatar className="h-8 w-8">
+                <AvatarImage src={session.user.image!} alt={session.user.name ?? ""} />
+                <AvatarFallback>{session.user.name?.[0]}</AvatarFallback>
+              </Avatar>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56" align="end" forceMount>
+            <DropdownMenuLabel className="font-normal">
+              <div className="flex flex-col space-y-1">
+                <p className="text-sm font-medium leading-none">{session.user.name}</p>
+                <p className="text-xs leading-none text-muted-foreground">
+                  {session.user.email}
+                </p>
+              </div>
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <Link href="/profile">Profile</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => signOut()}>
+              Sign Out
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     )
   }
@@ -60,16 +89,16 @@ function AuthButtons() {
       <Button 
         onClick={() => signIn("google", { callbackUrl: "/create" })} 
         variant="ghost" 
-        className="text-sm font-light transition-colors duration-200 ease-in-out hover:text-gray-700"
+        className="text-sm font-light transition-colors duration-200 ease-in-out hover:text-gray-700 hover:bg-gray-200"
       >
         Sign In
       </Button>
-      <Button 
+      {/* <Button 
         onClick={() => signIn("google", { callbackUrl: "/create" })} 
         className="bg-black text-white hover:bg-gray-800 text-sm font-light px-6 transition-colors duration-200 ease-in-out"
       >
         Get Started
-      </Button>
+      </Button> */}
     </div>
   )
 }

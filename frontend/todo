@@ -1,6 +1,7 @@
-- log in system, ideally with google oauth, no password
+- [done] log in system, ideally with google oauth, no password
+
+
+
 - connect with stripe
 - monitise the platform by taking commsion between sales/ pattern downloads and AI content generation 
 - add crochet obj to home page w/ three.js
-
- - backend 

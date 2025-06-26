@@ -1,10 +1,5 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Share2 } from "lucide-react";
-import Link from "next/link";
-
 export default function MarketplacePage() {
   return (
     <div className="min-h-screen bg-white text-black">

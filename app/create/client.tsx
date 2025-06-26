@@ -7,7 +7,6 @@ import { ParsedInstruction, parseInstruction } from "@/lib/crochet-parser"
 import { Canvas } from "@react-three/fiber"
 import { Stitch } from "@/components/crochet/Stitch"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
 interface Instruction {

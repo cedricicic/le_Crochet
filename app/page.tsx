@@ -1,6 +1,5 @@
 "use client"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight } from "lucide-react"
 import { motion, Variants, Variant } from "framer-motion"
@@ -64,7 +63,7 @@ export default function CrochetPlatform() {
                     ease: "easeInOut"
                   }}
                 />
-                <span className="relative z-10">The only pattern builder you'll ever need</span>
+                <span className="relative z-10">The only pattern builder you&rsquo;ll ever need</span>
               </Badge>
             </motion.div>
 

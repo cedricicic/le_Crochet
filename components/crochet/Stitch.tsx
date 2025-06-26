@@ -5,7 +5,11 @@ import { OrbitControls } from "@react-three/drei"
 import { useRef } from "react"
 import * as THREE from "three"
 
-export function Stitch(props: any) {
+interface StitchProps {
+  position?: [number, number, number]
+}
+
+export function Stitch(props: StitchProps) {
   const meshRef = useRef<THREE.Mesh>(null!)
 
   useFrame((state, delta) => {
@@ -26,4 +30,4 @@ export function Stitch(props: any) {
       <OrbitControls enableDamping />
     </>
   )
-} 
+}

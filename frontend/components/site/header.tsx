@@ -1,5 +1,8 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { useSession, signIn, signOut } from "next-auth/react"
 
 export function Header() {
   return (
@@ -23,14 +26,39 @@ export function Header() {
               Privacy
             </Link>
           </nav>
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" className="text-sm font-light">
-              Sign In
-            </Button>
-            <Button className="bg-black text-white hover:bg-gray-800 text-sm font-light px-6">Get Started</Button>
-          </div>
+          <AuthButtons />
         </div>
       </div>
     </header>
+  )
+}
+
+function AuthButtons() {
+  const { data: session } = useSession()
+
+  if (session) {
+    return (
+      <div className="flex items-center space-x-4">
+        <Link href="/create">
+          <Button className="bg-black text-white hover:bg-gray-800 text-sm font-light px-6">
+            Create
+          </Button>
+        </Link>
+        <Button onClick={() => signOut()} variant="ghost" className="text-sm font-light">
+          Sign Out
+        </Button>
+      </div>
+    )
+  }
+
+  return (
+    <div className="flex items-center space-x-4">
+      <Button onClick={() => signIn("google", { callbackUrl: "/create" })} variant="ghost" className="text-sm font-light">
+        Sign In
+      </Button>
+      <Button onClick={() => signIn("google", { callbackUrl: "/create" })} className="bg-black text-white hover:bg-gray-800 text-sm font-light px-6">
+        Get Started
+      </Button>
+    </div>
   )
 } 

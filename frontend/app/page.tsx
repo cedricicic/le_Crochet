@@ -39,7 +39,7 @@ export default function CrochetPlatform() {
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 overflow-hidden">
+      <section className="py-32 md:py-46 overflow-hidden">
         <div className="container mx-auto px-6">
           <motion.div 
             className="max-w-4xl mx-auto text-center"

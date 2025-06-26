@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight } from "lucide-react"
 import { motion, Variants, Variant } from "framer-motion"
+import { signIn } from "next-auth/react"
 
 export default function CrochetPlatform() {
   // Animation variants
@@ -109,7 +110,9 @@ export default function CrochetPlatform() {
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <Button className="bg-black text-white hover:bg-gray-800 px-8 py-3 text-sm font-light group">
+                <Button 
+                onClick={() => signIn("google", { callbackUrl: "/create" })} 
+                className="bg-black text-white hover:bg-gray-800 px-8 py-3 text-sm font-light group">
                   Start building your pattern 
                   <motion.div
                     className="ml-2"
@@ -211,7 +214,7 @@ export default function CrochetPlatform() {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto"
               variants={fadeInUp}
             >
-              <motion.div
+              {/* <motion.div
                 whileFocus={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
@@ -219,14 +222,16 @@ export default function CrochetPlatform() {
                   placeholder="Enter your email" 
                   className="border-gray-300 text-sm font-light focus:ring-2 focus:ring-gray-200 transition-all duration-200" 
                 />
-              </motion.div>
+              </motion.div> */}
               
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <Button className="bg-black text-white hover:bg-gray-800 px-8 text-sm font-light whitespace-nowrap relative overflow-hidden group">
+                <Button 
+                 onClick={() => signIn("google", { callbackUrl: "/create" })} 
+                className="bg-white text-black border border-gray-300 hover:bg-gray-800 hover:text-white px-8 text-sm font-light whitespace-nowrap relative overflow-hidden group">
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
                     initial={{ x: "-100%" }}

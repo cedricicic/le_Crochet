@@ -1,7 +1,11 @@
-- [done] log in system, ideally with google oauth, no password
+- add crochet obj to home page w/ three.js or build it directly w/ three.js 
 
 
 
+
+main objective: build a frontend that redirects users to create.lecrochet.com
+
+- log in system, ideally with google oauth, no password
 - connect with stripe
 - monitise the platform by taking commsion between sales/ pattern downloads 
-- add crochet obj to home page w/ three.js or build it directly w/ three.js 
+

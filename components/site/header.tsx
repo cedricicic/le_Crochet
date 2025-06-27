@@ -249,7 +249,7 @@ function MobileAuthButtons({ onClose }: { onClose: () => void }) {
     return (
       <div className="space-y-4">
         {/* User Info */}
-        <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+        <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-sm">
           <Avatar className="h-10 w-10">
             <AvatarImage src={session.user.image!} alt={session.user.name ?? ""} />
             <AvatarFallback>{session.user.name?.[0]}</AvatarFallback>
@@ -263,12 +263,12 @@ function MobileAuthButtons({ onClose }: { onClose: () => void }) {
         {/* Action Buttons */}
         <div className="space-y-3">
           <Link href="/create" onClick={onClose}>
-            <Button className="w-full bg-gray-200 text-black hover:bg-gray-300 text-sm font-light py-3 transition-all duration-200 ease-in-out hover:scale-105">
+            <Button className="w-full bg-gray-200 text-black hover:bg-gray-300 text-sm font-light py-3 transition-all duration-200 ease-in-out hover:scale-105 rounded-sm">
               Create
             </Button>
           </Link>
           <Link href="/profile" onClick={onClose}>
-            <Button variant="outline" className="w-full text-sm font-light py-3 transition-all duration-200 ease-in-out hover:scale-105">
+            <Button variant="outline" className="w-full text-sm font-light py-3 transition-all duration-200 ease-in-out hover:scale-105 rounded-sm">
               Profile
             </Button>
           </Link>

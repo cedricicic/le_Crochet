@@ -4,6 +4,8 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowRight } from "lucide-react"
 import { motion, Variants, Variant } from "framer-motion"
 import { signIn } from "next-auth/react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Code, Eye, Zap } from "lucide-react"
 
 export default function CrochetPlatform() {
   // Animation variants
@@ -160,9 +162,113 @@ export default function CrochetPlatform() {
         />
       </section>
 
+      <section className="mb-20 container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-extralight mb-4">Why Choose le Crochet?</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Modern tools for traditional crafts. Our platform bridges the gap between 
+              code and creativity, making pattern design accessible to everyone.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="border-0">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Code className="h-8 w-8 text-black" />
+                </div>
+                <CardTitle className="text-xl font-semibold">Simple Syntax</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-gray-600">
+                  Write patterns using intuitive CrochetScript syntax. No complex formatting, 
+                  just clean, readable code that describes your stitches.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 ">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Eye className="h-8 w-8 text-black" />
+                </div>
+                <CardTitle className="text-xl font-semibold">Live Preview</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-gray-600">
+                  See your pattern rendered instantly as you type. Visual feedback helps 
+                  you catch errors early and perfect your designs.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 ">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Zap className="h-8 w-8 text-black" />
+                </div>
+                <CardTitle className="text-xl font-semibold">Interactive</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-gray-600">
+                  Drag to pan, scroll to zoom, and explore every detail of your pattern. 
+                  Perfect for analyzing complex designs and sharing with others.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Pattern Types */}
+        <section className="mb-20 container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-extralight mb-4">Supports All Pattern Types</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              From simple scarves to complex amigurumi, le Crochet handles linear, 
+              circular, and granny square patterns with ease.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white p-6 rounded-xl  border">
+              <h3 className="font-semibold mb-3">Linear Patterns</h3>
+              <div className="bg-gray-50 p-3 rounded-lg text-sm font-mono">
+                <div className="text-gray-500">pattern: linear</div>
+                <div>ch 21</div>
+                <div>row 1: sc 20, turn</div>
+                <div>row 2: ch 1, sc 20</div>
+              </div>
+              <p className="text-sm text-gray-600 mt-3">Perfect for scarves, blankets, and flat pieces</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl border">
+              <h3 className="font-semibold mb-3">Circular Patterns</h3>
+              <div className="bg-gray-50 p-3 rounded-lg text-sm font-mono">
+                <div className="text-gray-500">pattern: circular</div>
+                <div>magic-ring</div>
+                <div>round 1: sc 6</div>
+                <div>round 2: sc 2 in each</div>
+              </div>
+              <p className="text-sm text-gray-600 mt-3">Ideal for hats, amigurumi, and round motifs</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl border">
+              <h3 className="font-semibold mb-3">Granny Squares</h3>
+              <div className="bg-gray-50 p-3 rounded-lg text-sm font-mono">
+                <div className="text-gray-500">pattern: granny-square</div>
+                <div>magic-ring</div>
+                <div>round 1: ch 3, dc 2</div>
+                <div>ch 2, *dc 3, ch 2*</div>
+              </div>
+              <p className="text-sm text-gray-600 mt-3">Classic granny square construction</p>
+            </div>
+          </div>
+        </section>
+
+
       {/* CTA Section */}
       <motion.section 
-        className="py-20 border-t border-gray-200"
+        className="py-20 "
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
